@@ -17,11 +17,10 @@ GIT_SERVER=valeriadiportela.sytes.net:3000
 GIT_HOST=https://${GIT_USERNAME}:${GIT_USERPSW}@${GIT_SERVER}
 #GIT_HOME=/Workspace/bluemix/
 #GIT_PATH=/Workspace/bluemix/bin/
-export GIT_PATH GIT_EMAIL  GIT_HOST
+export GIT_PATH GIT_EMAIL GIT_HOST
 
 GIT_ORG=/DEMO/
 GIT_SPACE=${GIT_HOST}${GIT_ORG}
-
 GIT_PROJECT=www-py-ml.git
 GIT_CMD=git
 

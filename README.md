@@ -145,6 +145,7 @@ https://valeriadiportela.sytes.net/DEMO/www-py-ml.git
   ```
 
 7. Publication GIT
+
 Create a new repository on the command line
   ```
   touch README.md
