@@ -160,3 +160,42 @@ Push an existing repository from the command line
   git remote add origin https://valeriadiportela.sytes.net/DEMO/www-py-ml.git
   git push -u origin master
   ```
+
+8. Executer localement l'application
+
+Install the dependencies listed in the requirements.txt External link icon file to be able to run the app locally.
+
+You can optionally use a [virtual environment](https://packaging.python.org/tutorials/installing-packages/#creating-and-using-virtual-environments) icon to avoid having these dependencies clash with those of other Python projects or your operating system.
+
+  ``` bash
+pip3 -m pip install -r requirements.txt
+  ```
+
+Executer l'application
+  ``` bash
+python3 hello.py
+  ```  
+
+8. Déployer l'application
+
+Login to IBM Cloud
+  ```
+  ibmcloud login
+  ```
+
+If you have a federated user ID, instead use the following command to log in with your single sign-on ID. See [Logging in with a federated ID](https://cloud.ibm.com/docs/cli/login_federated_id.html?locale=en-US) to learn more.
+  ```
+  ibmcloud login --sso
+  ```
+
+Target Cloud Foundry org and space
+  ```
+  ibmcloud target --cf
+  ```
+
+From within the get-started-python directory push your app to IBM Cloud
+  ```
+  ibmcloud cf push
+  ```
+
+This can take a minute. If there is an error in the deployment process you can use the command ibmcloud cf logs <Your-App-Name> --recent to troubleshoot.
