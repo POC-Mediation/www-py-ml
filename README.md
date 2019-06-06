@@ -160,6 +160,25 @@ Push an existing repository from the command line
   git remote add origin https://valeriadiportela.sytes.net/DEMO/www-py-ml.git
   git push -u origin master
   ```
+How to insert existing repo into gogs or git
+
+Just update the remote address.
+first,remove your remote origin
+```
+git remote rm origin
+```
+
+second,add new remote origin address
+```
+git remote add origin git@your_gogs_repos_here.com
+```
+
+at last,push your master branch code
+```
+git push origin master
+```
+
+
 
 8. Executer localement l'application
 
