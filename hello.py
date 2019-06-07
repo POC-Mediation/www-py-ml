@@ -1,14 +1,17 @@
 from cloudant import Cloudant
+import sqlite3
 from flask import Flask, render_template, request, jsonify
 import atexit
 import os
 import json
+import inspect
 
 app = Flask(__name__, static_url_path='')
 
 db_name = 'mydb'
 client = None
 db = None
+db3 = sqlite3.connect('example.db')
 
 if 'VCAP_SERVICES' in os.environ:
     vcap = json.loads(os.getenv('VCAP_SERVICES'))
@@ -33,6 +36,7 @@ elif os.path.isfile('vcap-local.json'):
         url = 'https://' + creds['host']
         client = Cloudant(user, password, url=url, connect=True)
         db = client.create_database(db_name, throw_on_exists=False)
+        db3_cursor = db3.cursor()
 
 # On IBM Cloud Cloud Foundry, get the port number from the environment variable PORT
 # When running this app on the local machine, default the port to 8000
@@ -51,7 +55,15 @@ def root():
 @app.route('/api/visitors', methods=['GET'])
 def get_visitor():
     if client:
-        return jsonify(list(map(lambda doc: doc['name'], db)))
+        my_database = client[db_name]
+        STR=[]
+        #STR = inspect.getmembers(my_database, predicate=inspect.ismethod)
+        #STR = STR + '<br>'
+        for elt in my_database["_all_docs"]["rows"] :
+            STR.append ([my_database[elt["id"]]['name']])
+            #STR = STR+'<br>'+my_database[doc]['name']
+        return jsonify(STR)
+        #return jsonify(list(map(lambda doc: doc['name'], db)))
     else:
         print('No database')
         return jsonify([])
