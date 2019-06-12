@@ -9,6 +9,7 @@ from collections import defaultdict
 
 from stop_words import get_stop_words
 
+import nltk
 from nltk.tokenize import sent_tokenize, word_tokenize
 from nltk import pos_tag
 
@@ -20,7 +21,7 @@ from nltk.stem.snowball import FrenchStemmer
 ps = FrenchStemmer()
 
 
-#nltk.download('wordnet')
+nltk.download('wordnet')
 from nltk.corpus import wordnet as wn
 tag_map = defaultdict(lambda : wn.NOUN)
 tag_map['J'] = wn.ADJ
