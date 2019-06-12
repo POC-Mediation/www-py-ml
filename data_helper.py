@@ -10,18 +10,18 @@ from collections import defaultdict
 from stop_words import get_stop_words
 
 from nltk.tokenize import sent_tokenize, word_tokenize
-from nltk.corpus import wordnet as wn
 #from nltk import pos_tag
 #from nltk.corpus import stopwords
 #from nltk.stem import WordNetLemmatizer
-#from nltk.stem.snowball import FrenchStemmer
-#ps = FrenchStemmer()
+from nltk.stem.snowball import FrenchStemmer
+ps = FrenchStemmer()
 
 
-tag_map = defaultdict(lambda : wn.NOUN)
-tag_map['J'] = wn.ADJ
-tag_map['V'] = wn.VERB
-tag_map['R'] = wn.ADV
+#from nltk.corpus import wordnet as wn
+#tag_map = defaultdict(lambda : wn.NOUN)
+#tag_map['J'] = wn.ADJ
+#tag_map['V'] = wn.VERB
+#tag_map['R'] = wn.ADV
 
 stop_words = get_stop_words('french')
 
