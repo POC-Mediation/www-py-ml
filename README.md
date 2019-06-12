@@ -45,10 +45,12 @@ To deploy to IBM Cloud, it can be helpful to set up a manifest.yml file. One is 
 The manifest.yml includes basic information about your app, such as the name, how much memory to allocate for each instance and the route. In this manifest.yml **random-route: true** generates a random route for your app to prevent your route from colliding with others.  You can replace **random-route: true** with **host: myChosenHostName**, supplying a host name of your choice. [Learn more...](https://console.bluemix.net/docs/manageapps/depapps.html#appmanifest)
  ```
  applications:
- - name: GetStartedPython
+ - name: PredicteurClauses
    random-route: true
-   memory: 128M
+   buildpack: https://github.com/cloudfoundry/buildpack-python.git
+   memory: 512M
  ```
+
 
 ## 4. Deploy the app
 
@@ -124,6 +126,14 @@ We're now going to update your local code to point to this database. We'll creat
 
 3. Copy and paste the `username`, `password`, and `host` from the credentials to the same fields of the `vcap-local.json` file replacing **CLOUDANT_DATABASE_USERNAME**, **CLOUDANT_DATABASE_PASSWORD**, and **CLOUDANT_DATABASE_URL**.
 
+3. Select your runtime
+
+Create a file runtime.txt where manifest.yml resides, add the desired python version
+
+  ```
+python-3.7.2
+  ```
+
 4. Run your application locally.
   ```
 python hello.py
@@ -133,8 +143,15 @@ python hello.py
 
 5. Make any changes you want and re-deploy to IBM Cloud!
   ```
-cf push
-  ```
+  cf push
+  ibmcloud cf push PredicteurClauses -b https://github.com/cloudfoundry/python-buildpack.git#v1.6.34
+  ibmcloud cf logs PredicteurClauses --recent
+    ```
+
+  check version of package
+    ```
+  pip3 show nltk
+    ```
 
   View your app at the URL listed in the output of the push command, for example, *myUrl.mybluemix.net*.
 
