@@ -11,8 +11,8 @@ import logging
 #import data_helper
 import numpy as np
 import pandas as pd
-#import tensorflow as tf
-#from pprint import pprint
+import tensorflow as tf
+from pprint import pprint
 #from tensorflow.contrib import learn
 
 
