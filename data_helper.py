@@ -11,13 +11,16 @@ from stop_words import get_stop_words
 
 from nltk.tokenize import sent_tokenize, word_tokenize
 from nltk import pos_tag
+
 #from nltk.corpus import stopwords
+# stopwords.words('french')
+
 from nltk.stem import WordNetLemmatizer
 from nltk.stem.snowball import FrenchStemmer
 ps = FrenchStemmer()
 
 
-#from nltk.corpus import wordnet as wn
+from nltk.corpus import wordnet as wn
 #tag_map = defaultdict(lambda : wn.NOUN)
 #tag_map['J'] = wn.ADJ
 #tag_map['V'] = wn.VERB
@@ -99,7 +102,6 @@ def stematize_texte(texte):
 	return output_texte
 
 
-# stopwords.words('french')
 def lemmatisation_texte(texte) :
 	words = texte.lower();
 	output_texte = ""
