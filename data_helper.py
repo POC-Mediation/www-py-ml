@@ -9,7 +9,7 @@ from collections import defaultdict
 
 from stop_words import get_stop_words
 
-#from nltk.tokenize import sent_tokenize, word_tokenize
+from nltk.tokenize import sent_tokenize, word_tokenize
 #from nltk import pos_tag
 #from nltk.corpus import stopwords
 #from nltk.corpus import wordnet as wn
