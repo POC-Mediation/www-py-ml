@@ -34,6 +34,10 @@ export GIT_SSL_NO_VERIFY=1
 
 ${GIT_CMD} config --global http.sslverify false
 #git init
+
+echo git remote rm origin
+git remote rm origin
+
 echo git remote add origin ${GIT_SPACE}${GIT_PROJECT}
 git remote add origin ${GIT_SPACE}${GIT_PROJECT}
 
