@@ -5,18 +5,17 @@ import logging
 import numpy as np
 import pandas as pd
 from collections import Counter
+from collections import defaultdict
+
+from stop_words import get_stop_words
 
 from nltk.tokenize import sent_tokenize, word_tokenize
 from nltk.stem.snowball import FrenchStemmer
-from stop_words import get_stop_words
 
-from collections import defaultdict
 from nltk.corpus import wordnet as wn
-from nltk.tokenize import word_tokenize
 from nltk import pos_tag
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
-
 from nltk.stem.snowball import FrenchStemmer
 
 
