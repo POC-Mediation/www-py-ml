@@ -27,32 +27,24 @@
         $( document ).ready(function() {
             $.i18n().load( {
                 en: {
-                    "welcome": "Welcome.",
-                    "name": "name",
-                    "what_is_your_name": "What is your name?",
+                    "welcome": "Interface de test - PredicteurClauses",
+                    "fait": "rappel des faits",
+                    "label_fait": "Exposez la synthèse faits de la réclamation",
                     "hello": "Hello $1",
                     "added_to_database": "Hello $1, I've added you to the database!",
                     "database_contents": "Database contents: "
                 },
                 fr: {
                     "welcome": "Bonjour.",
-                    "name": "nom",
-                    "what_is_your_name": "Quel est votre nom?",
+                    "fait": "rappel des faits",
+                    "label_fait": "Exposez la synthèse faits de la réclamation",
                     "hello": "Bonjour $1",
                     "added_to_database": "Bonjour $1, Je vous ai ajouté dans la base de données !",
                     "database_contents": "Contenus de la base de données : "
-                },
-                ja: {
-                    "welcome": "ようこそ。",
-                    "name": "名前",
-                    "what_is_your_name": "お名前を教えてください。",
-                    "hello": "こんにちは $1",
-                    "added_to_database": "こんにちは $1 さん、あなたをデータベースに追加しました。",
-                    "database_contents": "データベースの内容: "
                 }
             } );
             $('body').i18n();
-            $('#user_name').attr("placeholder", $.i18n('name') );
+            $('#rappel_fait').attr("placeholder", $.i18n('fait') );
         });
         </script>
 
@@ -62,8 +54,9 @@
     <div class="container" id="container">
         <h1 data-i18n="welcome"></h1> <!- Welcome ->
         <div id="nameInput" class="input-group-lg center-block helloInput">
-            <p class="lead" data-i18n="what_is_your_name"></p>
-            <input id="user_name" type="text" class="form-control" aria-describedby="sizing-addon1" value="" />
+            <p class="lead" data-i18n="label_fait"></p>
+            <textarea style="height:480px" id="rappel_fait" class="form-control" aria-describedby="sizing-addon1">
+            </textarea>
         </div>
         <p id="response" class="lead text-center"></p>
 
@@ -71,7 +64,8 @@
     </div>
     <footer class="footer">
         <div class="container">
-            <span><a href="https://console.bluemix.net/docs/tutorials/index.html" target="_blank">Looking for more tutorials?</a></span>
+            <span><a href="https://console.bluemix.net/docs/tutorials/index.html" target="_blank">...</a></span>
+            <span><a href="https://cloud.ibm.com/docs/tutorials?topic=solution-tutorials-tutorials#tutorials" target="_blank">...</a></span>
         </div>
     </footer>
 
@@ -83,16 +77,16 @@
 
 <script>
     	//Submit data when enter key is pressed
-        $('#user_name').keydown(function(e) {
-        	var name = $('#user_name').val();
+        $('#rappel_fait').keydown(function(e) {
+        	var rappel_fait = $('#rappel_fait').val();
             if (e.which == 13 && name.length > 0) { //catch Enter key
             	//POST request to API to create a new visitor entry in the database
                 $.ajax({
-				  method: "POST",
-				  url: "./api/visitors",
-				  contentType: "application/json",
-				  data: JSON.stringify({name: name })
-				})
+        				  method: "POST",
+        				  url: "./api/visitors",
+        				  contentType: "application/json",
+        				  data: JSON.stringify({rappel_fait: rappel_fait })
+				        })
                 .done(function(data) {
                     if(data && data.name){
                         if(data._id)
@@ -123,7 +117,7 @@
           }
 
           //Call getNames on page load.
-          getNames();
+          //getNames();
 
 
     </script>

@@ -15,9 +15,6 @@ body {
   text-align: center;
   background-color: #f5f7fa;
 }
-.helloInput {
-  width: 300px;
-}
 */
 /* style.css
  * This file provides css styles.
@@ -30,6 +27,10 @@ body, html {
 	font-family: "HelveticaNeue-Light", "Helvetica Neue Light",
 		"Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 	color: #ffffff;
+}
+
+.helloInput {
+  height: 540px;
 }
 
 a {
