@@ -20,11 +20,12 @@ from nltk.stem.snowball import FrenchStemmer
 ps = FrenchStemmer()
 
 
+#nltk.download('wordnet')
 from nltk.corpus import wordnet as wn
-#tag_map = defaultdict(lambda : wn.NOUN)
-#tag_map['J'] = wn.ADJ
-#tag_map['V'] = wn.VERB
-#tag_map['R'] = wn.ADV
+tag_map = defaultdict(lambda : wn.NOUN)
+tag_map['J'] = wn.ADJ
+tag_map['V'] = wn.VERB
+tag_map['R'] = wn.ADV
 
 stop_words = get_stop_words('french')
 
