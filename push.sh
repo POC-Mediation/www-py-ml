@@ -53,7 +53,7 @@ ${GIT_CMD} add -u
 TS=`timestamp`
 echo "TIMESTAMP = $TS"
 
-git commit -m "update myIP - $TS"
+git commit -m "update project - $TS"
 git push -u origin master
 
 #git push https://xavier:valer1e!@myhomesweethome.sytes.net:3000/xavier/valeria_IP.git --all

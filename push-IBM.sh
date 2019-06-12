@@ -11,15 +11,15 @@ timestamp() {
 #export USERID USERPW
 
 GIT_EMAIL=xavier.mary@outlook.com
-GIT_USERNAME=xavier
+GIT_USERNAME=xavier.mary@outlook.com
 GIT_USERPSW=valer1e!
-GIT_SERVER=valeriadiportela.sytes.net:3000
+GIT_SERVER=github.com
 GIT_HOST=https://${GIT_USERNAME}:${GIT_USERPSW}@${GIT_SERVER}
 #GIT_HOME=/Workspace/bluemix/
 #GIT_PATH=/Workspace/bluemix/bin/
 export GIT_PATH GIT_EMAIL GIT_HOST
 
-GIT_ORG=/DEMO/
+GIT_ORG=/POC-Mediation/
 GIT_SPACE=${GIT_HOST}${GIT_ORG}
 GIT_PROJECT=www-py-ml.git
 GIT_CMD=git
@@ -39,6 +39,7 @@ echo git remote rm origin
 git remote rm origin
 
 echo git remote add origin ${GIT_SPACE}${GIT_PROJECT}
+git remote add origin https://github.com/POC-Mediation/www-py-ml.git
 git remote add origin ${GIT_SPACE}${GIT_PROJECT}
 
 ${GIT_CMD} add .
@@ -53,7 +54,7 @@ ${GIT_CMD} add -u
 TS=`timestamp`
 echo "TIMESTAMP = $TS"
 
-git commit -m "update myIP - $TS"
+git commit -m "update project - $TS"
 git push -u origin master
 
 #git push https://xavier:valer1e!@myhomesweethome.sytes.net:3000/xavier/valeria_IP.git --all
