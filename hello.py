@@ -5,6 +5,15 @@ import os
 import json
 import inspect
 #import sqlite3
+import sys
+import logging
+import data_helper
+import numpy as np
+import pandas as pd
+import tensorflow as tf
+from pprint import pprint
+from tensorflow.contrib import learn
+
 
 app = Flask(__name__, static_url_path='')
 
@@ -77,6 +86,7 @@ def get_visitor():
         print('No database')
         return jsonify([])
 
+
 # /**
 #  * Endpoint to get a JSON array of all the visitors in the database
 #  * REST API example:
@@ -100,6 +110,42 @@ def put_visitor():
     else:
         print('No database')
         return jsonify(data)
+
+
+
+
+@app.route('/api/test', methods=['GET'])
+def get_facts():
+    if client:
+        my_database = client[db_name]
+        STR=[]
+        #STR = inspect.getmembers(my_database, predicate=inspect.ismethod)
+        #STR = STR + '<br>'
+        for elt in my_database["_all_docs"]["rows"] :
+            STR.append ([my_database[elt["id"]]['rappel_fait']])
+            #STR = STR+'<br>'+my_database[doc]['name']
+        return jsonify(STR)
+        #return jsonify(list(map(lambda doc: doc['name'], db)))
+    else:
+        print('No database')
+        return jsonify([])
+
+
+@app.route('/api/test', methods=['POST'])
+def put_facts():
+    reinit()
+    rappel_fait = request.json['rappel_fait']
+    data = {'rappel_fait':rappel_fait}
+    if client:
+        my_document = db.create_document(data)
+        data['_id'] = my_document['_id']
+        return jsonify(data)
+    else:
+        print('No database')
+        return jsonify(data)
+
+
+
 
 @atexit.register
 def shutdown():
