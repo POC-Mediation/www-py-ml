@@ -13,7 +13,7 @@ import numpy as np
 import pandas as pd
 import tensorflow as tf
 from pprint import pprint
-#from tensorflow.contrib import learn
+from tensorflow.contrib import learn
 
 
 app = Flask(__name__, static_url_path='')
