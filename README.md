@@ -1,6 +1,7 @@
-# Getting Started with Python on IBM Cloud
+# PredicteurClauses on IBM Cloud
 
-To get started, we'll take you through a sample Python Flask app, help you set up a development environment, deploy to IBM Cloud and add a Cloudant database.
+This application is made with Python 3, Cloudant DB and Flask. This application expose GUI and web service.
+To get started, we'll take you through a this Python Flask app, help you set up a development environment, deploy to IBM Cloud and add a Cloudant database.
 
 The following instructions are for deploying the application as a Cloud Foundry application. To deploy as a container to **IBM Cloud Kubernetes Service** instead, [see README-kubernetes.md](kubernetes/README-kubernetes.md)
 

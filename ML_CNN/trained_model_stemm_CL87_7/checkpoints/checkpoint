@@ -1,6 +1,0 @@
-model_checkpoint_path: "/Workspace/Ontologie/Projet-FFA/Doc-FFA/data-POC/bin/CNN/trained_model_stemm_CL87_7/checkpoints/model-280"
-all_model_checkpoint_paths: "/Workspace/Ontologie/Projet-FFA/Doc-FFA/data-POC/bin/CNN/trained_model_stemm_CL87_7/checkpoints/model-40"
-all_model_checkpoint_paths: "/Workspace/Ontologie/Projet-FFA/Doc-FFA/data-POC/bin/CNN/trained_model_stemm_CL87_7/checkpoints/model-80"
-all_model_checkpoint_paths: "/Workspace/Ontologie/Projet-FFA/Doc-FFA/data-POC/bin/CNN/trained_model_stemm_CL87_7/checkpoints/model-120"
-all_model_checkpoint_paths: "/Workspace/Ontologie/Projet-FFA/Doc-FFA/data-POC/bin/CNN/trained_model_stemm_CL87_7/checkpoints/model-160"
-all_model_checkpoint_paths: "/Workspace/Ontologie/Projet-FFA/Doc-FFA/data-POC/bin/CNN/trained_model_stemm_CL87_7/checkpoints/model-280"
