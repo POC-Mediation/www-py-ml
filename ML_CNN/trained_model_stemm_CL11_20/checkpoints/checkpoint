@@ -1,0 +1,5 @@
+model_checkpoint_path: "/Workspace/Ontologie/Projet-FFA/Doc-FFA/data-POC/bin/CNN/trained_model_stemm_CL11_20/checkpoints/model-240"
+all_model_checkpoint_paths: "/Workspace/Ontologie/Projet-FFA/Doc-FFA/data-POC/bin/CNN/trained_model_stemm_CL11_20/checkpoints/model-40"
+all_model_checkpoint_paths: "/Workspace/Ontologie/Projet-FFA/Doc-FFA/data-POC/bin/CNN/trained_model_stemm_CL11_20/checkpoints/model-80"
+all_model_checkpoint_paths: "/Workspace/Ontologie/Projet-FFA/Doc-FFA/data-POC/bin/CNN/trained_model_stemm_CL11_20/checkpoints/model-120"
+all_model_checkpoint_paths: "/Workspace/Ontologie/Projet-FFA/Doc-FFA/data-POC/bin/CNN/trained_model_stemm_CL11_20/checkpoints/model-240"

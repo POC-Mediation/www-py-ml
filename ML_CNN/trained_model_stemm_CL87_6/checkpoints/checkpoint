@@ -1,0 +1,3 @@
+model_checkpoint_path: "/Workspace/Ontologie/Projet-FFA/Doc-FFA/data-POC/bin/CNN/trained_model_stemm_CL87_6/checkpoints/model-80"
+all_model_checkpoint_paths: "/Workspace/Ontologie/Projet-FFA/Doc-FFA/data-POC/bin/CNN/trained_model_stemm_CL87_6/checkpoints/model-40"
+all_model_checkpoint_paths: "/Workspace/Ontologie/Projet-FFA/Doc-FFA/data-POC/bin/CNN/trained_model_stemm_CL87_6/checkpoints/model-80"

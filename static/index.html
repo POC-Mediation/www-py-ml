@@ -27,24 +27,27 @@
         $( document ).ready(function() {
             $.i18n().load( {
                 en: {
-                    "welcome": "Interface de test - PredicteurClauses",
-                    "fait": "rappel des faits",
-                    "label_fait": "Exposez la synthèse faits de la réclamation",
+                    "title": "Interface de test - PredicteurClauses",
+                    "dispute_id": "Identifiant de la réclamation",
+                    "label_dispute_id": "Entrez l'identifiant de la réclamation",
+                    "facts": "rappel des faits",
+                    "label_facts": "Exposez la synthèse faits de la réclamation",
                     "hello": "Hello $1",
                     "added_to_database": "Hello $1, I've added you to the database!",
                     "database_contents": "Database contents: "
                 },
                 fr: {
-                    "welcome": "Bonjour.",
-                    "fait": "rappel des faits",
-                    "label_fait": "Exposez la synthèse faits de la réclamation",
+                    "title": "Interface de test - PredicteurClauses.",
+                    "facts": "rappel des faits",
+                    "label_facts": "Exposez la synthèse faits de la réclamation",
                     "hello": "Bonjour $1",
                     "added_to_database": "Bonjour $1, Je vous ai ajouté dans la base de données !",
                     "database_contents": "Contenus de la base de données : "
                 }
             } );
             $('body').i18n();
-            $('#rappel_fait').attr("placeholder", $.i18n('fait') );
+            $('#dispute_id').attr("placeholder", $.i18n('dispute_id') );
+            $('#facts').attr("placeholder", $.i18n('facts') );
         });
         </script>
 
@@ -52,11 +55,15 @@
 
 <body>
     <div class="container" id="container">
-        <h1 data-i18n="welcome"></h1> <!- Welcome ->
-        <div id="nameInput" class="input-group-lg center-block helloInput">
-            <p class="lead" data-i18n="label_fait"></p>
-            <textarea style="height:480px" id="rappel_fait" class="form-control" aria-describedby="sizing-addon1">
-            </textarea>
+        <h1 data-i18n="title"></h1> <!- Title ->
+        <input id="service_id" type=hidden value="1">
+        <div id="nameInput1" class="input-group-lg center-block input1">
+            <p class="lead" data-i18n="label_dispute_id"></p>
+            <input style="height:14px" id="dispute_id" class="form-control" value="" aria-describedby="sizing-addon1" />
+        </div>
+        <div id="nameInput2" class="input-group-lg center-block input2">
+            <p class="lead" data-i18n="label_facts"></p>
+            <textarea style="height:280px" id="facts" class="form-control" aria-describedby="sizing-addon2"></textarea>
         </div>
         <p id="response" class="lead text-center"></p>
 
@@ -64,8 +71,9 @@
     </div>
     <footer class="footer">
         <div class="container">
-            <span><a href="https://console.bluemix.net/docs/tutorials/index.html" target="_blank">...</a></span>
-            <span><a href="https://cloud.ibm.com/docs/tutorials?topic=solution-tutorials-tutorials#tutorials" target="_blank">...</a></span>
+          <span>Ce service analyse la synthèse des faits et propose des clauses pertinentes.</span><br>
+          <!--span><a href="https://console.bluemix.net/docs/tutorials/index.html" target="_blank">...</a></span-->
+          <span><a href="https://cloud.ibm.com/docs/tutorials?topic=solution-tutorials-tutorials#tutorials" target="_blank">...</a></span>
         </div>
     </footer>
 
@@ -77,15 +85,17 @@
 
 <script>
     	//Submit data when enter key is pressed
-        $('#rappel_fait').keydown(function(e) {
-        	var rappel_fait = $('#rappel_fait').val();
+        $('#facts').keydown(function(e) {
+        	var rappel_fait = $('#facts').val();
+          var service_id = $('#service_id').val();
+          var dispute_id = $('#dispute_id').val();
             if (e.which == 13 && rappel_fait.length > 0) { //catch Enter key
             	//POST request to API to create a new visitor entry in the database
                 $.ajax({
         				  method: "POST",
-        				  url: "./api/test",
+        				  url: "./api/predictClauses",
         				  contentType: "application/json",
-        				  data: JSON.stringify({rappel_fait: rappel_fait })
+        				  data: JSON.stringify({"service_id":service_id, "dispute_id": dispute_id, "facts": rappel_fait })
 				        })
                 .done(function(data) {
                     if(data && data.name){
@@ -97,7 +107,8 @@
                     else {
                         $('#response').html(AntiXSS.sanitizeInput(data));
                     }
-                    $('#nameInput').hide();
+                    //$('#nameInput1').hide();
+                    //$('#nameInput2').hide();
                     getClauses();
                 });
             }
@@ -105,7 +116,7 @@
 
         //Retrieve all the visitors from the database
         function getClauses(){
-          $.get("./api/test")
+          $.get("./api/predictClauses")
               .done(function(data) {
                   if(data.length > 0) {
                     data.forEach(function(element, index) {
@@ -118,7 +129,7 @@
 
           //Retrieve all the visitors from the database
           function getNames(){
-            $.get("./api/visitors")
+            $.get("./api/predictClauses")
                 .done(function(data) {
                     if(data.length > 0) {
                       data.forEach(function(element, index) {
